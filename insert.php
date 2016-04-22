@@ -1,5 +1,5 @@
 <?php
-	include "../../database.inc.php";
+	include "../../../database.inc.php";
 
 	if (isset($_POST['submit'])) {
 		$file = $_FILES['file']['tmp_name'];
@@ -32,6 +32,9 @@
 		while(($fileop = fgetcsv($handle, 1000, ",")) !== FALSE) {
 			switch ($table) {
 				case 'Inventory':
+					$inventory = array($fileop[0], $fileop[1], $fileop[2], $fileop[3], $fileop[4]);
+					$sql = mysqli_query($link, "INSERT INTO $table (serial_no, name, location, available, Model_model_no)
+						VALUES ($inventory[0], '$inventory[1]', '$inventory[2]', $inventory[3], $inventory[4])");
 					break;
 				case 'Model':
 					break;
