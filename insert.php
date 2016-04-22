@@ -26,6 +26,26 @@
 				$table = 'Inventory';
 				break;
 		}
+
+		$handle = fopen($file,"r");
+
+		while(($fileop = fgetcsv($handle, 1000, ",")) !== FALSE) {
+			switch ($table) {
+				case 'Inventory':
+					break;
+				case 'Model':
+					break;
+				case 'Customers':
+					break;
+				case 'Orders':
+					break;
+				case 'Payments':
+					break;
+				default:
+					break;
+			}
+		}	
+	}	
 ?>
 <html lang="en">
 <head>
