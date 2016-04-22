@@ -57,6 +57,13 @@
 				default:
 					break;
 			}
+
+			if ($sql) {
+				echo "Data transfer successful";
+			}
+			else {
+				echo "Failed ".mysqli_error($link)."<br>";
+			}
 		}	
 	}	
 ?>
