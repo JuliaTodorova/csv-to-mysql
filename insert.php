@@ -1,5 +1,31 @@
 <?php
 	include "../../database.inc.php";
+
+	if (isset($_POST['submit'])) {
+		$file = $_FILES['file']['tmp_name'];
+
+		$tableSelect = $_POST['table'];
+		$table = 'Inventory';
+
+		switch ($tableSelect) {
+			case 0:
+				$table = 'Inventory';
+				break;
+			case 1:
+				$table = 'Model';
+				break;
+			case 2:
+				$table = 'Customers';
+				break;
+			case 3:
+				$table = 'Orders';
+				break;
+			case 4:
+				$table = 'Payments';			
+			default:
+				$table = 'Inventory';
+				break;
+		}
 ?>
 <html lang="en">
 <head>
