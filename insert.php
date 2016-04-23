@@ -46,9 +46,16 @@
 						cruising_speed, max_seed, external_design, interior_design, number_guests) 
 						VALUES ($model[0], '$model[1]', $model[2], '$model[3]', $model[4], $model[5], $model[6], $model[7], $model[8],
 							 $model[9], $model[10], '$model[11]', '$model[12]', '$model[13]', '$model[14]', $model[15], '$model[16]',
-							  $model[17], $model[18], $model[19], '$model[20]', '$model[21]')");
+							  $model[17], $model[18], '$model[19]', '$model[20]', $model[21])");
 					break;
 				case 'Customers':
+					$customers = array($fileop[0], $fileop[1], $fileop[2], $fileop[3], $fileop[4], $fileop[5], $fileop[6],
+						$fileop[7], $fileop[8], $fileop[9]);
+
+					$sql = mysqli_query($link, "INSERT INTO $table (first_name, last_name, address, city, postal_code, country,
+					 	province, email, password, phone) 
+						VALUES ('$customers[0]', '$customers[1]', '$customers[2]', '$customers[3]', '$customers[4]', '$customers[5]', 
+							'$customers[6]', '$customers[7]', '$customers[8]', '$customers[9]')");
 					break;
 				case 'Orders':
 					break;
