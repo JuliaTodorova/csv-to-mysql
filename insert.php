@@ -5,8 +5,6 @@
 		$file = $_FILES['file']['tmp_name'];
 
 		$tableSelect = $_POST['table'];
-		$table = 'Inventory';
-
 		switch ($tableSelect) {
 			case 0:
 				$table = 'Inventory';
@@ -21,11 +19,13 @@
 				$table = 'Orders';
 				break;
 			case 4:
-				$table = 'Payments';			
+				$table = 'Payments';
+				break;			
 			default:
 				$table = 'Inventory';
 				break;
 		}
+		print_r($table);
 
 		$handle = fopen($file,"r");
 
@@ -33,6 +33,7 @@
 			switch ($table) {
 				case 'Inventory':
 					$inventory = array($fileop[0], $fileop[1], $fileop[2], $fileop[3], $fileop[4]);
+					
 					$sql = mysqli_query($link, "INSERT INTO $table (serial_no, name, location, available, Model_model_no)
 						VALUES ($inventory[0], '$inventory[1]', '$inventory[2]', $inventory[3], $inventory[4])");
 					break;
@@ -58,11 +59,17 @@
 							'$customers[6]', '$customers[7]', '$customers[8]', '$customers[9]')");
 					break;
 				case 'Orders':
+					$orders = array($fileop[0], $fileop[1], $fileop[2], $fileop[3], $fileop[4], $fileop[5]);
+					$sql = mysqli_query($link, "INSERT INTO $table (serial_no, completed, quantity, price, amount_outstanding,
+						delivered)
+						VALUES ($orders[0], $orders[1], $orders[2], $orders[3], $orders[4], $orders[5])");
+
 					break;
 				case 'Payments':
+
 					break;
 				default:
-					break;
+					break;	
 			}
 
 			if ($sql) {
