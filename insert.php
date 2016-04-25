@@ -66,6 +66,10 @@
 
 					break;
 				case 'Payments':
+					$payments = array($fileop[0], $fileop[1], $fileop[2], $fileop[3]);
+					$query =  "INSERT INTO $table (amount, date, verified, Orders_serial_no) 
+						VALUES ($payments[0], $payments[1], $payments[2], $payments[3])";
+					$sql = mysqli_query($link,$query);
 
 					break;
 				default:
